@@ -2,7 +2,7 @@ const NodeMediaServer = require('./');
 
 const config = {
   rtmp: {
-    port: 1935,
+    port: process.env.RTMPPORT || 1935,
     chunk_size: 60000,
     gop_cache: true,
     ping: 30,
@@ -16,24 +16,24 @@ const config = {
 	*/
   },
   http: {
-    port: 8000,
+    port: process.env.HTTPPORT || 8000,
     mediaroot: './media',
     webroot: './www',
     allow_origin: '*',
     api: true
   },
   https: {
-    port: 8443,
+    port: process.env.HTTPSPORT || 8443,
     key: './privatekey.pem',
     cert: './certificate.pem',
   },
   auth: {
     api: true,
-    api_user: 'admin',
-    api_pass: 'admin',
+    api_user: process.env.USER || 'admin',
+    api_pass: process.env.PASSWORD || 'admin',
     play: false,
     publish: false,
-    secret: 'nodemedia2017privatekey'
+    secret: process.env.SECRET || 'nodemedia2017privatekey'
   }
 };
 
