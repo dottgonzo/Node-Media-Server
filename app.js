@@ -28,7 +28,7 @@ const config = {
     cert: './certificate.pem',
   },
   auth: {
-    api: true,
+    api: process.env.NOAUTH ? false : true,
     api_user: process.env.USER || 'admin',
     api_pass: process.env.PASSWORD || 'admin',
     play: false,
